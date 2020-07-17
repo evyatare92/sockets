@@ -24,6 +24,6 @@ spec:
             memory: {{ $application.memory }}
         env:
         - name: SOCKET_PORT
-          value: {{ $application.port }}
+          value: "{{ $application.port }}"
         - name: SOCKET_QUEUE_LENGTH
-          value: {{ $application.queueLength }}
+          value: "{{ $application.queueLength }}"
