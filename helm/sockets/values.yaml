@@ -1,0 +1,10 @@
+application:
+  image: evyatare92/sockets
+  name: morse
+  port: 1234
+  queueLength: 5
+  cpu: 100m
+  memory: 256Mi
+service:
+  type: ClusterIP
+  port: 1234

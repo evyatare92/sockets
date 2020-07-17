@@ -1,0 +1,29 @@
+{{- $application := .Values.application -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $application.name }}
+  labels:
+    app: {{ $application.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ $application.name }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{ $application.name }}
+    spec:
+      containers:
+      - name: {{ $application.name }}
+        image: {{ $application.image }}
+        resources:
+          requests:
+            cpu: {{ $application.cpu }}
+            memory: {{ $application.memory }}
+        env:
+        - name: SOCKET_PORT
+          value: {{ $application.port }}
+        - name: SOCKET_QUEUE_LENGTH
+          value: {{ $application.queueLength }}
