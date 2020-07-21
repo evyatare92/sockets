@@ -15,6 +15,11 @@ pipeline
                 sh script: "docker run -d --name mysocket -p 1234:1234 -e SOCKET_PORT=1234 -e SOCKET_QUEUE_LENGTH=5 sockets"
             }
         }
+		stage("test container"){
+            steps{
+				sh script: "python3.6 test/Client.py localhost 1234"
+            }
+        }
         stage("deploy to azure AKS"){
             steps{
                 sh script: "helm install sockets ./helm/sockets --kubeconfig /home/jenkins/.kube/config"
