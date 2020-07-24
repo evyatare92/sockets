@@ -22,13 +22,13 @@ pipeline
 		stage("test container"){
             steps{
 				//sh script: "python3.6 test/Client.py localhost 1234"
-				sh script: 'testing container dev1'
+				sh script: 'echo testing container dev1'
             }
         }
         stage("deploy to azure AKS"){
             steps{
                 //sh script: "helm install sockets ./helm/sockets --kubeconfig /home/jenkins/.kube/config"
-				sh script: 'deploying to kubernetes dev1'
+				sh script: 'echo deploying to kubernetes dev1'
             }
         }
     }
